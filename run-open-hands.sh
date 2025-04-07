@@ -5,7 +5,7 @@ if [ -f .env ]; then
     # Load environment variables from .env file
     export $(cat .env | grep -v '^#' | xargs)
 
-    export WORKSPACE_BASE=$(pwd)/workspaces
+    export WORKSPACE_BASE=$(pwd)
 
     # Run the Open Hands container
     docker run -it --rm --pull=always \
