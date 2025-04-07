@@ -5,6 +5,8 @@ if [ -f .env ]; then
     # Load environment variables from .env file
     export $(cat .env | grep -v '^#' | xargs)
 
+    export WORKSPACE_BASE=$(pwd)
+
     # Run the Open Hands container
     docker run -it --rm --pull=always \
         -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:latest-nikolaik \
