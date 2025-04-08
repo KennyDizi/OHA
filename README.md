@@ -55,3 +55,7 @@ The script will:
 - Docker installed and running
 - Valid Anthropic API key
 - Proper permissions to access Docker socket
+
+### Prompting Best Practices
+
+Check it out [here](https://docs.all-hands.dev/modules/usage/prompting/prompting-best-practices) to learn how to prompt efficiently.
