@@ -59,3 +59,7 @@ The script will:
 ### Prompting Best Practices
 
 Check it out [here](https://docs.all-hands.dev/modules/usage/prompting/prompting-best-practices) to learn how to prompt efficiently.
+
+### Custom repository knowledge base
+
+Create repository-specific Microagents to store the repository knowledge base. Check it out [here](https://docs.all-hands.dev/modules/usage/prompting/microagents-repo)
