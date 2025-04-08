@@ -2,6 +2,14 @@
 
 🌾 🥳 🌋 🏰 🌅 🌕 OpenHands Advanced 🌖 🌔 🌈 🏆 👑
 
+## SWE Bench Leaderboard
+
+[#1](https://multi-swe-bench.github.io/#/)
+
+![SWE Bench Leaderboard showing MopenHands + Claude-3.7-Sonnet at #1 with 19.32% overall resolution rate](./assets/swe-bench-leaderboard.png)
+
+*MopenHands + Claude-3.7-Sonnet achieves state-of-the-art performance on the SWE-bench leaderboard.*
+
 ## Environment Setup
 
 ### Copy the example environment file
