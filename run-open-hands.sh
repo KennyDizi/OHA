@@ -9,7 +9,7 @@ if [ -f .env ]; then
 
     # Run the Open Hands container
     docker run -it --rm --pull=always \
-        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:latest-nikolaik \
+        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.31-nikolaik \
         -e LOG_ALL_EVENTS=true \
         -e SANDBOX_USER_ID=$(id -u) \
         -e WORKSPACE_MOUNT_PATH=$WORKSPACE_BASE \
@@ -21,7 +21,7 @@ if [ -f .env ]; then
         -v ~/.openhands-state:/.openhands-state \
         --add-host host.docker.internal:host-gateway \
         --name openhands-app-advanced \
-        docker.all-hands.dev/all-hands-ai/openhands:latest \
+        docker.all-hands.dev/all-hands-ai/openhands:0.31 \
         python -m openhands.core.cli
 else
     echo "Error: .env file not found"
