@@ -20,11 +20,11 @@ cp .env.example .env
 
 ### Configure your environment variables in `.env`
 
-- `LLM_PROVIDER`: Set to "Anthropic" (default)
+- `LLM_PROVIDER`: Set to `Anthropic` (default)
 - `LLM_API_KEY`: Your Anthropic API key
-- `LLM_MODEL`: Set to "anthropic/claude-3-7-sonnet-20250219" (default)
-- `APP_NAME`: Set to "openhands-app-advanced" (default)
-- `AGENT_MEMORY_ENABLED`: Set to "true" to enable agent memory (default)
+- `LLM_MODEL`: Set to `anthropic/claude-3-7-sonnet-20250219` (default)
+- `APP_NAME`: Set to `openhands-app-advanced` (default)
+- `AGENT_MEMORY_ENABLED`: Set to `true` to enable agent memory (default)
 
 Read more at [here](https://docs.all-hands.dev/modules/usage/llms)
 
