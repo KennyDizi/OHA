@@ -1,6 +1,6 @@
 # OHA
 
-🌾 🥳 🌋 🏰 🌅 🌕 OpenHands Advanced 🌖 🌔 🌈 🏆 👑
+🌾 🥳 🌋 🏰 🌅 🌕 [OpenHands](https://github.com/All-Hands-AI/OpenHands) Advanced 🌖 🌔 🌈 🏆 👑
 
 ## SWE Bench Leaderboard
 
