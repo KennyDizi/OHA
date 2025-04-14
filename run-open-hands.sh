@@ -21,9 +21,9 @@ if [ -f .env ]; then
         -v ~/.openhands-state:/.openhands-state \
         -p 3080:3080 \
         --add-host host.docker.internal:host-gateway \
-        --name openhands-app-advanced \
+        --name $CONTAINER_NAME \
         docker.all-hands.dev/all-hands-ai/openhands:0.32 \
-        python -m openhands.core.cli
+        python3 -m openhands.core.cli
 else
     echo "Error: .env file not found"
     exit 1
