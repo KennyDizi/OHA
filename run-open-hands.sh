@@ -14,6 +14,7 @@ if [ -f .env ]; then
         -e SANDBOX_USER_ID=$(id -u) \
         -e WORKSPACE_MOUNT_PATH=$WORKSPACE_BASE \
         -e LLM_API_KEY=$LLM_API_KEY \
+        -e LLM_PROVIDER=$LLM_PROVIDER \
         -e LLM_MODEL=$LLM_MODEL \
         -e AGENT_MEMORY_ENABLED=$AGENT_MEMORY_ENABLED \
         -v $WORKSPACE_BASE:/opt/workspace_base \
