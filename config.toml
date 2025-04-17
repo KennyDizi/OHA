@@ -1,0 +1,4 @@
+# Read more at: https://docs.all-hands.dev/modules/usage/configuration-options
+
+[core]
+reasoning_effort = "high" # can be high, medium or low
