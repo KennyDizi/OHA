@@ -17,6 +17,7 @@ if [ -f .env ]; then
         -e LLM_PROVIDER=$LLM_PROVIDER \
         -e LLM_MODEL=$LLM_MODEL \
         -e AGENT_MEMORY_ENABLED=$AGENT_MEMORY_ENABLED \
+        -e SECURITY_CONFIRMATION_MODE=$SECURITY_CONFIRMATION_MODE \
         -v $WORKSPACE_BASE:/opt/workspace_base \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v ~/.openhands-state:/.openhands-state \
