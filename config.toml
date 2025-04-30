@@ -1,4 +1,10 @@
 # Read more at: https://docs.all-hands.dev/modules/usage/configuration-options
 
 [core]
+# Specify platform for multi-architecture builds (e.g., "linux/amd64" or "linux/arm64")
+platform = "linux/amd64"
 reasoning_effort = "high" # can be high, medium or low
+
+[llm]
+num_retries = 3
+caching_prompt = true
