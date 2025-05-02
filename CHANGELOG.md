@@ -1,3 +1,10 @@
+## [2025-05-02] - PR#31 ([View PR](https://github.com/KennyDizi/OHA/pull/31))
+
+### Dependencies
+- Updated:
+  * `SANDBOX_RUNTIME_CONTAINER_IMAGE` from `0.35-nikolaik` to `0.36-nikolaik`
+  * `docker.all-hands.dev/all-hands-ai/openhands` from `0.35` to `0.36`
+
 ## [2025-04-30] - PR#28 ([View PR](https://github.com/KennyDizi/OHA/pull/28))
 
 ### Dependencies
