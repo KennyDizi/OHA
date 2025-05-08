@@ -6,6 +6,7 @@ if [ -f .env ]; then
     export $(cat .env | grep -v '^#' | xargs)
 
     export WORKSPACE_BASE=$(pwd)
+    export SANDBOX_VOLUMES=$(pwd):/workspace:rw
 
     # Run the Open Hands container
     docker run -it --rm --pull=always \
@@ -25,7 +26,7 @@ if [ -f .env ]; then
         --add-host host.docker.internal:host-gateway \
         --name $CONTAINER_NAME \
         docker.all-hands.dev/all-hands-ai/openhands:0.37 \
-        python3 -m openhands.core.cli
+        python3 -m openhands.cli.main
 else
     echo "Error: .env file not found"
     exit 1
