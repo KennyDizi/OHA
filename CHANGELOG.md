@@ -1,3 +1,11 @@
+## [2025-05-08] - PR#37 ([View PR](https://github.com/KennyDizi/OHA/pull/37))
+
+### Changed
+- Updated Docker run command to execute `python3 -m openhands.cli.main` in `run-open-hands.sh`.
+
+### Added
+- Added `SANDBOX_VOLUMES` environment variable to `run-open-hands.sh`, mapping the current directory to `/workspace`.
+
 ## [2025-05-08] - PR#36 ([View PR](https://github.com/KennyDizi/OHA/pull/36))
 
 ### Dependencies
