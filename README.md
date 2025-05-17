@@ -4,11 +4,21 @@
 
 ## SWE Bench Leaderboard
 
+### All
+
 [#1](https://multi-swe-bench.github.io/#/)
 
 ![SWE Bench Leaderboard showing MopenHands + Claude-3.7-Sonnet at #1 with 19.32% overall resolution rate](./assets/SWE-Bench.png)
 
 *MopenHands + Claude-3.7-Sonnet achieves state-of-the-art performance on the SWE-bench leaderboard.*
+
+### Python
+
+![SWE Bench Python Leaderboard](./assets/SWE-Bench-Python.png)
+
+### TypeScript
+
+![SWE Bench TypeScript Leaderboard](./assets/SWE-Bench-TypeScript.png)
 
 ## Environment Setup
 
