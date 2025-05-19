@@ -18,8 +18,12 @@ if [ -f .env ]; then
         -e LLM_PROVIDER=$LLM_PROVIDER \
         -e LLM_MODEL=$LLM_MODEL \
         -e AGENT_MEMORY_ENABLED=$AGENT_MEMORY_ENABLED \
-        -e SECURITY_CONFIRMATION_MODE=$SECURITY_CONFIRMATION_MODE \
+        -e LLM_CACHING_PROMPT=$LLM_CACHING_PROMPT \
+        -e AGENT_ENABLE_THINK=$AGENT_ENABLE_THINK \
+        -e LLM_NUM_RETRIES=$LLM_NUM_RETRIES \
         -e SANDBOX_VOLUMES=$SANDBOX_VOLUMES \
+        -e CORE_REASONING_EFFORT=$CORE_REASONING_EFFORT \
+        -e CORE_PLATFORM=$CORE_PLATFORM \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v ~/.openhands-state:/.openhands-state \
         -p 3080:3080 \
