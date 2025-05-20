@@ -5,6 +5,17 @@ if [ -f .env ]; then
     # Load environment variables from .env file
     export $(cat .env | grep -v '^#' | xargs)
 
+    # Only pass CORE_REASONING_EFFORT to Docker if it is set/non-empty
+    CORE_REASONING_EFFORT_ARG=""
+    if [[ -n "$CORE_REASONING_EFFORT" ]]; then
+        CORE_REASONING_EFFORT_ARG="-e CORE_REASONING_EFFORT=${CORE_REASONING_EFFORT}"
+    fi
+
+    # Display what will actually be passed to Docker
+    if [[ -n "$CORE_REASONING_EFFORT_ARG" ]]; then
+        echo "CORE_REASONING_EFFORT_ARG=$CORE_REASONING_EFFORT_ARG"
+    fi
+
     export SANDBOX_VOLUMES=$(pwd):/workspace:rw
     export RUNTIME_MOUNT=$(pwd):/workspace:rw
 
@@ -22,7 +33,7 @@ if [ -f .env ]; then
         -e AGENT_ENABLE_THINK=$AGENT_ENABLE_THINK \
         -e LLM_NUM_RETRIES=$LLM_NUM_RETRIES \
         -e SANDBOX_VOLUMES=$SANDBOX_VOLUMES \
-        -e CORE_REASONING_EFFORT=$CORE_REASONING_EFFORT \
+        $CORE_REASONING_EFFORT_ARG \
         -e CORE_PLATFORM=$CORE_PLATFORM \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v ~/.openhands-state:/.openhands-state \
