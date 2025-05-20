@@ -19,6 +19,14 @@ if [ -f .env ]; then
     export SANDBOX_VOLUMES=$(pwd):/workspace:rw
     export RUNTIME_MOUNT=$(pwd):/workspace:rw
 
+    # ------------------------------------------------------------------
+    # Ensure the dedicated Docker network exists
+    if ! docker network ls --format '{{.Name}}' | grep -q '^oha-network$'; then
+        echo "Creating Docker network 'oha-network'"
+        docker network create oha-network
+    fi
+    # ------------------------------------------------------------------
+
     # Run the Open Hands container
     docker run -it --rm --pull=always \
         -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.38-nikolaik \
@@ -39,6 +47,7 @@ if [ -f .env ]; then
         -v ~/.openhands-state:/.openhands-state \
         -p 3080:3080 \
         --add-host host.docker.internal:host-gateway \
+        --network oha-network \
         --name $CONTAINER_NAME \
         docker.all-hands.dev/all-hands-ai/openhands:0.38 \
         python3 -m openhands.cli.main
