@@ -29,7 +29,7 @@ if [ -f .env ]; then
 
     # Run the Open Hands container
     docker run -it --rm --pull=always \
-        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.38-nikolaik \
+        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.39-nikolaik \
         -e LOG_ALL_EVENTS=true \
         -e SANDBOX_USER_ID=$(id -u) \
         -e RUNTIME_MOUNT=$RUNTIME_MOUNT \
@@ -50,7 +50,7 @@ if [ -f .env ]; then
         --add-host host.docker.internal:host-gateway \
         --network oha-network \
         --name $CONTAINER_NAME \
-        docker.all-hands.dev/all-hands-ai/openhands:0.38 \
+        docker.all-hands.dev/all-hands-ai/openhands:0.39 \
         python3 -m openhands.cli.main
 else
     echo "Error: .env file not found"
