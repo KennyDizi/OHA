@@ -5,6 +5,10 @@ if [ -f .env ]; then
     # Load environment variables from .env file
     export $(cat .env | grep -v '^#' | xargs)
 
+    # ---------- guarantee a deterministic container name ----------
+    : "${CONTAINER_NAME:=oha-container}"   # default if .env omits it
+    # ----------------------------------------------------------------
+
     # Only pass CORE_REASONING_EFFORT to Docker if it is set/non-empty
     CORE_REASONING_EFFORT_ARG=""
     if [[ -n "$CORE_REASONING_EFFORT" ]]; then
@@ -49,7 +53,7 @@ if [ -f .env ]; then
         -p 3080:3080 \
         --add-host host.docker.internal:host-gateway \
         --network oha-network \
-        --name $CONTAINER_NAME \
+        --name "${CONTAINER_NAME}" \
         docker.all-hands.dev/all-hands-ai/openhands:0.39 \
         python3 -m openhands.cli.main
 else
