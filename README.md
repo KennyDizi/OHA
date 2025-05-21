@@ -85,3 +85,5 @@ Create repository-specific Microagents to store the repository knowledge base. C
 [MCP](https://github.com/All-Hands-AI/OpenHands/blob/main/docs/modules/usage/mcp.md)
 
 ### Reference docs
+
+Put all development documents to folder `reference_docs` at root repository folder (Markdown format is recommended). Create `index.md` to brief the overview of all document files. You can create each `index.md` file for each sub-folder.
