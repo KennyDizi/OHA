@@ -46,7 +46,7 @@ Read more at [here](https://docs.all-hands.dev/modules/usage/llms)
 
 ## Running the Application
 
-1. Make the run script executable:
+### Make the run script executable
 
 ```bash
 chmod +x run-open-hands.sh
@@ -69,7 +69,7 @@ The script will:
 ## Requirements
 
 - Docker installed and running
-- Valid Anthropic API key
+- Valid LLM Provider API key
 - Proper permissions to access Docker socket
 
 ### Prompting Best Practices
@@ -79,3 +79,11 @@ Check it out [here](https://docs.all-hands.dev/modules/usage/prompting/prompting
 ### Custom repository knowledge base
 
 Create repository-specific Microagents to store the repository knowledge base. Check it out [here](https://docs.all-hands.dev/modules/usage/prompting/microagents-repo)
+
+### Model Context Protocol
+
+[MCP](https://github.com/All-Hands-AI/OpenHands/blob/main/docs/modules/usage/mcp.md)
+
+### Reference docs
+
+Put all development documents to folder `reference_docs` at root repository folder (Markdown format is recommended). Create `index.md` to brief the overview of all document files. You can create each `index.md` file for each sub-folder.
