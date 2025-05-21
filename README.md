@@ -79,3 +79,9 @@ Check it out [here](https://docs.all-hands.dev/modules/usage/prompting/prompting
 ### Custom repository knowledge base
 
 Create repository-specific Microagents to store the repository knowledge base. Check it out [here](https://docs.all-hands.dev/modules/usage/prompting/microagents-repo)
+
+### Model Context Protocol
+
+[MCP](https://github.com/All-Hands-AI/OpenHands/blob/main/docs/modules/usage/mcp.md)
+
+### Reference docs
