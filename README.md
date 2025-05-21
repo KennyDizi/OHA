@@ -46,7 +46,7 @@ Read more at [here](https://docs.all-hands.dev/modules/usage/llms)
 
 ## Running the Application
 
-1. Make the run script executable:
+### Make the run script executable
 
 ```bash
 chmod +x run-open-hands.sh
@@ -69,7 +69,7 @@ The script will:
 ## Requirements
 
 - Docker installed and running
-- Valid Anthropic API key
+- Valid LLM Provider API key
 - Proper permissions to access Docker socket
 
 ### Prompting Best Practices
