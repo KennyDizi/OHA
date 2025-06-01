@@ -12,6 +12,12 @@
 
 *MopenHands + Claude-3.7-Sonnet achieves state-of-the-art performance on the SWE-bench leaderboard.*
 
+### SWE Bench Verified
+
+[#2](https://www.swebench.com/)
+
+![SWE Bench Verified Leaderboard](./assets/SWE-Bench-Verified.png)
+
 ### Python
 
 ![SWE Bench Python Leaderboard](./assets/SWE-Bench-Python.png)
