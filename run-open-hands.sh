@@ -17,7 +17,7 @@ if [ -f .env ]; then
 
     # Display selected model & reasoning-effort (only when an effort was supplied)
     if [[ -n "$CORE_REASONING_EFFORT_ARG" ]]; then
-        echo "Using ${LLM_MODEL} with reasoning effort ${CORE_REASONING_EFFORT}"
+        echo "Using model: ${LLM_MODEL} with reasoning effort: ${CORE_REASONING_EFFORT}"
     fi
 
     export SANDBOX_VOLUMES=$(pwd):/workspace:rw
