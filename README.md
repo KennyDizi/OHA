@@ -37,16 +37,16 @@ cp .env.example .env
 ### Configure your environment variables in `.env`
 
 - `LLM_API_KEY`          : Your LLM provider API key **(required)**
-- `LLM_PROVIDER`         : LLM provider to use (default: "Anthropic")
-- `LLM_MODEL`            : Model to call (default: "anthropic/claude-3-7-sonnet-20250219")
-- `LLM_NUM_RETRIES`      : How many times to retry a failed completion (default: 3)
-- `LLM_CACHING_PROMPT`   : Enable prompt/result cache (default: true)
-- `CORE_REASONING_EFFORT`: Agent reasoning effort, e.g. "low" / "medium" / "high" (default: "high")
-- `CORE_PLATFORM`        : Target platform architecture (default: "linux/amd64")
-- `AGENT_MEMORY_ENABLED` : Persist and recall agent memory across runs (default: true)
-- `CONTAINER_NAME`       : Name given to the Docker container (default: "OHA")
-- `AGENT_ENABLE_THINK`   : Emit the agent's internal THINK steps to the logs (default: true)
-- `AGENT_ENABLE_MCP`     : Enable multi-component-planning mode (default: false)
+- `LLM_PROVIDER`         : LLM provider to use (default: `anthropic`)
+- `LLM_MODEL`            : Model to call (default: `anthropic/claude-sonnet-4-20250514`)
+- `LLM_NUM_RETRIES`      : How many times to retry a failed completion (default: `3`)
+- `LLM_CACHING_PROMPT`   : Enable prompt/result cache (default: `true`)
+- `CORE_REASONING_EFFORT`: Agent reasoning effort, e.g. `low` / `medium` / `high` (default: `high`)
+- `CORE_PLATFORM`        : Target platform architecture (default: `linux/amd64`)
+- `AGENT_MEMORY_ENABLED` : Persist and recall agent memory across runs (default: `true`)
+- `CONTAINER_NAME`       : Name given to the Docker container (default: `OHA`)
+- `AGENT_ENABLE_THINK`   : Emit the agent's internal THINK steps to the logs (default: `true`)
+- `AGENT_ENABLE_MCP`     : Enable multi-component-planning mode (default: `false`)
 
 Read more at [here](https://docs.all-hands.dev/modules/usage/llms)
 
