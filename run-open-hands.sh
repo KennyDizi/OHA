@@ -15,9 +15,9 @@ if [ -f .env ]; then
         CORE_REASONING_EFFORT_ARG="-e CORE_REASONING_EFFORT=${CORE_REASONING_EFFORT}"
     fi
 
-    # Display what will actually be passed to Docker
+    # Display selected model & reasoning-effort (only when an effort was supplied)
     if [[ -n "$CORE_REASONING_EFFORT_ARG" ]]; then
-        echo "CORE_REASONING_EFFORT_ARG=$CORE_REASONING_EFFORT_ARG"
+        echo "Using model: ${LLM_MODEL} with reasoning effort: ${CORE_REASONING_EFFORT}"
     fi
 
     export SANDBOX_VOLUMES=$(pwd):/workspace:rw
