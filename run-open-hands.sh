@@ -33,9 +33,10 @@ if [ -f .env ]; then
 
     # Run the Open Hands container
     docker run -it --rm --pull=always \
-        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.39.2-nikolaik \
+        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.40.0-nikolaik \
         -e LOG_ALL_EVENTS=true \
         -e SANDBOX_USER_ID=$(id -u) \
+        -e SANDBOX_VOLUMES=$SANDBOX_VOLUMES \
         -e RUNTIME_MOUNT=$RUNTIME_MOUNT \
         -e LLM_API_KEY=$LLM_API_KEY \
         -e LLM_PROVIDER=$LLM_PROVIDER \
@@ -45,7 +46,6 @@ if [ -f .env ]; then
         -e AGENT_ENABLE_THINK=$AGENT_ENABLE_THINK \
         -e LLM_NUM_RETRIES=$LLM_NUM_RETRIES \
         -e AGENT_ENABLE_MCP=$AGENT_ENABLE_MCP \
-        -e SANDBOX_VOLUMES=$SANDBOX_VOLUMES \
         $CORE_REASONING_EFFORT_ARG \
         -e CORE_PLATFORM=$CORE_PLATFORM \
         -v /var/run/docker.sock:/var/run/docker.sock \
@@ -54,7 +54,7 @@ if [ -f .env ]; then
         --add-host host.docker.internal:host-gateway \
         --network oha-network \
         --name "${CONTAINER_NAME}" \
-        docker.all-hands.dev/all-hands-ai/openhands:0.39.2 \
+        docker.all-hands.dev/all-hands-ai/openhands:0.40.0 \
         python3 -m openhands.cli.main
 else
     echo "Error: .env file not found"
