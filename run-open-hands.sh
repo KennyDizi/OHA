@@ -50,6 +50,8 @@ if [ -f .env ]; then
         -e CORE_PLATFORM=$CORE_PLATFORM \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v ~/.openhands-state:/.openhands-state \
+        -v $RUNTIME_MOUNT \
+        -w /workspace \
         -p 3080:3080 \
         --add-host host.docker.internal:host-gateway \
         --network oha-network \
