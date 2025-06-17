@@ -1,0 +1,12 @@
+[core]
+search_api_key = "tvly-***"
+reasoning_effort = "high"
+platform = "linux/amd64" # Can be linux/amd64 or linux/arm64
+
+[llm]
+api_key = "sk-proj-***"
+# API base URL (For Headless / CLI only -  In Web this is overridden by Session Init)
+#base_url = ""
+provider = "openai" # Can be openai, anthropic, deepseek, openrouter
+# Model to use. (For Headless / CLI only -  In Web this is overridden by Session Init)
+model = "openai/o3"
