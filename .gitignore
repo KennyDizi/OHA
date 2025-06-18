@@ -175,3 +175,4 @@ cython_debug/
 .aider*
 
 *.DS_Store
+config.toml
