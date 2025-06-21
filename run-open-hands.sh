@@ -48,8 +48,9 @@ if [ -f .env ]; then
         -e AGENT_ENABLE_MCP=$AGENT_ENABLE_MCP \
         $CORE_REASONING_EFFORT_ARG \
         -e CORE_PLATFORM=$CORE_PLATFORM \
+        -e CORE_SEARCH_API_KEY=$CORE_SEARCH_API_KEY \
         -v /var/run/docker.sock:/var/run/docker.sock \
-        -v ~/.openhands-state:/.openhands \
+        -v ~/.openhands:/.openhands \
         -v $RUNTIME_MOUNT \
         -w /workspace \
         -p 3080:3080 \
