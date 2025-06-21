@@ -9,15 +9,15 @@ if [ -f .env ]; then
     : "${CONTAINER_NAME:=oha-container}"   # default if .env omits it
     # ----------------------------------------------------------------
 
-    # Only pass CORE_REASONING_EFFORT to Docker if it is set/non-empty
-    CORE_REASONING_EFFORT_ARG=""
-    if [[ -n "$CORE_REASONING_EFFORT" ]]; then
-        CORE_REASONING_EFFORT_ARG="-e CORE_REASONING_EFFORT=${CORE_REASONING_EFFORT}"
+    # Only pass REASONING_EFFORT to Docker if it is set/non-empty
+    REASONING_EFFORT_ARG=""
+    if [[ -n "$REASONING_EFFORT" ]]; then
+        REASONING_EFFORT_ARG="-e REASONING_EFFORT=${REASONING_EFFORT}"
     fi
 
     # Display selected model & reasoning-effort (only when an effort was supplied)
-    if [[ -n "$CORE_REASONING_EFFORT_ARG" ]]; then
-        echo "Using model: ${LLM_MODEL} with reasoning effort: ${CORE_REASONING_EFFORT}"
+    if [[ -n "$REASONING_EFFORT_ARG" ]]; then
+        echo "Using model: ${LLM_MODEL} with reasoning effort: ${REASONING_EFFORT}"
     fi
 
     export SANDBOX_VOLUMES=$(pwd):/workspace:rw
@@ -30,6 +30,40 @@ if [ -f .env ]; then
         docker network create oha-network
     fi
     # ------------------------------------------------------------------
+
+    # Print out environment variables that are passed to docker
+    echo "--- Passing the following environment variables to Docker ---"
+    print_var() {
+        local name="$1"
+        local value="$2"
+        if [ -z "$value" ]; then return; fi
+        # Convert name to lowercase for case-insensitive check, using tr for portability
+        local lower_name
+        lower_name=$(echo "$name" | tr '[:upper:]' '[:lower:]')
+        # Check for sensitive keywords in the variable name
+        if [[ "$lower_name" == *key* || "$lower_name" == *secret* ]]; then
+            echo "${name}=${value:0:3}***"
+        else
+            echo "${name}=${value}"
+        fi
+    }
+    print_var "SANDBOX_RUNTIME_CONTAINER_IMAGE" "docker.all-hands.dev/all-hands-ai/runtime:0.45.0-nikolaik"
+    print_var "LOG_ALL_EVENTS" "true"
+    print_var "SANDBOX_USER_ID" "$(id -u)"
+    print_var "SANDBOX_VOLUMES" "$SANDBOX_VOLUMES"
+    print_var "RUNTIME_MOUNT" "$RUNTIME_MOUNT"
+    print_var "LLM_API_KEY" "$LLM_API_KEY"
+    print_var "LLM_PROVIDER" "$LLM_PROVIDER"
+    print_var "LLM_MODEL" "$LLM_MODEL"
+    print_var "AGENT_MEMORY_ENABLED" "$AGENT_MEMORY_ENABLED"
+    print_var "LLM_CACHING_PROMPT" "$LLM_CACHING_PROMPT"
+    print_var "AGENT_ENABLE_THINK" "$AGENT_ENABLE_THINK"
+    print_var "LLM_NUM_RETRIES" "$LLM_NUM_RETRIES"
+    print_var "AGENT_ENABLE_MCP" "$AGENT_ENABLE_MCP"
+    print_var "REASONING_EFFORT" "$REASONING_EFFORT"
+    print_var "PLATFORM" "$PLATFORM"
+    print_var "SEARCH_API_KEY" "$SEARCH_API_KEY"
+    echo "-----------------------------------------------------------"
 
     # Run the Open Hands container
     docker run -it --rm --pull=always \
@@ -46,9 +80,9 @@ if [ -f .env ]; then
         -e AGENT_ENABLE_THINK=$AGENT_ENABLE_THINK \
         -e LLM_NUM_RETRIES=$LLM_NUM_RETRIES \
         -e AGENT_ENABLE_MCP=$AGENT_ENABLE_MCP \
-        $CORE_REASONING_EFFORT_ARG \
-        -e CORE_PLATFORM=$CORE_PLATFORM \
-        -e CORE_SEARCH_API_KEY=$CORE_SEARCH_API_KEY \
+        $REASONING_EFFORT_ARG \
+        -e PLATFORM=$PLATFORM \
+        -e SEARCH_API_KEY=$SEARCH_API_KEY \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v ~/.openhands:/.openhands \
         -v $RUNTIME_MOUNT \
