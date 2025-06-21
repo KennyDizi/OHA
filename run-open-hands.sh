@@ -49,7 +49,7 @@ if [ -f .env ]; then
         $CORE_REASONING_EFFORT_ARG \
         -e CORE_PLATFORM=$CORE_PLATFORM \
         -v /var/run/docker.sock:/var/run/docker.sock \
-        -v ~/.openhands-state:/.openhands \
+        -v ~/.openhands:/.openhands \
         -v $RUNTIME_MOUNT \
         -w /workspace \
         -p 3080:3080 \
