@@ -9,15 +9,15 @@ if [ -f .env ]; then
     : "${CONTAINER_NAME:=oha-container}"   # default if .env omits it
     # ----------------------------------------------------------------
 
-    # Only pass CORE_REASONING_EFFORT to Docker if it is set/non-empty
-    CORE_REASONING_EFFORT_ARG=""
-    if [[ -n "$CORE_REASONING_EFFORT" ]]; then
-        CORE_REASONING_EFFORT_ARG="-e CORE_REASONING_EFFORT=${CORE_REASONING_EFFORT}"
+    # Only pass REASONING_EFFORT to Docker if it is set/non-empty
+    REASONING_EFFORT_ARG=""
+    if [[ -n "$REASONING_EFFORT" ]]; then
+        REASONING_EFFORT_ARG="-e REASONING_EFFORT=${REASONING_EFFORT}"
     fi
 
     # Display selected model & reasoning-effort (only when an effort was supplied)
-    if [[ -n "$CORE_REASONING_EFFORT_ARG" ]]; then
-        echo "Using model: ${LLM_MODEL} with reasoning effort: ${CORE_REASONING_EFFORT}"
+    if [[ -n "$REASONING_EFFORT_ARG" ]]; then
+        echo "Using model: ${LLM_MODEL} with reasoning effort: ${REASONING_EFFORT}"
     fi
 
     export SANDBOX_VOLUMES=$(pwd):/workspace:rw
@@ -46,9 +46,9 @@ if [ -f .env ]; then
         -e AGENT_ENABLE_THINK=$AGENT_ENABLE_THINK \
         -e LLM_NUM_RETRIES=$LLM_NUM_RETRIES \
         -e AGENT_ENABLE_MCP=$AGENT_ENABLE_MCP \
-        $CORE_REASONING_EFFORT_ARG \
-        -e CORE_PLATFORM=$CORE_PLATFORM \
-        -e CORE_SEARCH_API_KEY=$CORE_SEARCH_API_KEY \
+        $REASONING_EFFORT_ARG \
+        -e PLATFORM=$PLATFORM \
+        -e SEARCH_API_KEY=$SEARCH_API_KEY \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v ~/.openhands:/.openhands \
         -v $RUNTIME_MOUNT \
