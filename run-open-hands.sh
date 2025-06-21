@@ -31,6 +31,40 @@ if [ -f .env ]; then
     fi
     # ------------------------------------------------------------------
 
+    # Print out environment variables that are passed to docker
+    echo "--- Passing the following environment variables to Docker ---"
+    print_var() {
+        local name="$1"
+        local value="$2"
+        if [ -z "$value" ]; then return; fi
+        # Convert name to lowercase for case-insensitive check, using tr for portability
+        local lower_name
+        lower_name=$(echo "$name" | tr '[:upper:]' '[:lower:]')
+        # Check for sensitive keywords in the variable name
+        if [[ "$lower_name" == *key* || "$lower_name" == *secret* ]]; then
+            echo "${name}=${value:0:3}***"
+        else
+            echo "${name}=${value}"
+        fi
+    }
+    print_var "SANDBOX_RUNTIME_CONTAINER_IMAGE" "docker.all-hands.dev/all-hands-ai/runtime:0.45.0-nikolaik"
+    print_var "LOG_ALL_EVENTS" "true"
+    print_var "SANDBOX_USER_ID" "$(id -u)"
+    print_var "SANDBOX_VOLUMES" "$SANDBOX_VOLUMES"
+    print_var "RUNTIME_MOUNT" "$RUNTIME_MOUNT"
+    print_var "LLM_API_KEY" "$LLM_API_KEY"
+    print_var "LLM_PROVIDER" "$LLM_PROVIDER"
+    print_var "LLM_MODEL" "$LLM_MODEL"
+    print_var "AGENT_MEMORY_ENABLED" "$AGENT_MEMORY_ENABLED"
+    print_var "LLM_CACHING_PROMPT" "$LLM_CACHING_PROMPT"
+    print_var "AGENT_ENABLE_THINK" "$AGENT_ENABLE_THINK"
+    print_var "LLM_NUM_RETRIES" "$LLM_NUM_RETRIES"
+    print_var "AGENT_ENABLE_MCP" "$AGENT_ENABLE_MCP"
+    print_var "REASONING_EFFORT" "$REASONING_EFFORT"
+    print_var "PLATFORM" "$PLATFORM"
+    print_var "SEARCH_API_KEY" "$SEARCH_API_KEY"
+    echo "-----------------------------------------------------------"
+
     # Run the Open Hands container
     docker run -it --rm --pull=always \
         -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.45.0-nikolaik \
