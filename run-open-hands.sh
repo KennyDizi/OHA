@@ -62,6 +62,7 @@ if [ -f .env ]; then
     print_var "AGENT_ENABLE_MCP" "$AGENT_ENABLE_MCP"
     print_var "REASONING_EFFORT" "$REASONING_EFFORT"
     print_var "SANDBOX_PLATFORM" "$SANDBOX_PLATFORM"
+    print_var "SANDBOX_ENABLE_GPU" "$SANDBOX_ENABLE_GPU"
     print_var "SEARCH_API_KEY" "$SEARCH_API_KEY"
     echo "-----------------------------------------------------------"
 
@@ -82,6 +83,7 @@ if [ -f .env ]; then
         -e AGENT_ENABLE_MCP=$AGENT_ENABLE_MCP \
         $REASONING_EFFORT_ARG \
         -e SANDBOX_PLATFORM=$SANDBOX_PLATFORM \
+        -e SANDBOX_ENABLE_GPU=$SANDBOX_ENABLE_GPU \
         -e SEARCH_API_KEY=$SEARCH_API_KEY \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v ~/.openhands:/.openhands \
