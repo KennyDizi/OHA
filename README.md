@@ -88,7 +88,11 @@ Create repository-specific Microagents to store the repository knowledge base. C
 
 ### Model Context Protocol
 
-[MCP](https://github.com/All-Hands-AI/OpenHands/blob/main/docs/modules/usage/mcp.md)
+[MCP](https://github.com/All-Hands-AI/OpenHands/blob/main/docs/usage/mcp.mdx)
+
+### Search Engine
+
+[Tavily](https://github.com/All-Hands-AI/OpenHands/blob/main/docs/usage/search-engine-setup.mdx)
 
 ### Reference docs
 
