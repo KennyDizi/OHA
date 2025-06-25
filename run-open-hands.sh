@@ -42,7 +42,7 @@ if [ -f .env ]; then
         lower_name=$(echo "$name" | tr '[:upper:]' '[:lower:]')
         # Check for sensitive keywords in the variable name
         if [[ "$lower_name" == *key* || "$lower_name" == *secret* ]]; then
-            echo "${name}=${value:0:3}***"
+            echo "${name}=${value:0:6}***"
         else
             echo "${name}=${value}"
         fi
