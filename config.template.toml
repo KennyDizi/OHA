@@ -1,12 +1,39 @@
 [core]
-search_api_key = "tvly-***"
-reasoning_effort = "high"
-platform = "linux/amd64" # Can be linux/amd64 or linux/arm64
+search_api_key=tvly-***"
+reasoning_effort=high
+platform=linux/amd64 # Can be linux/amd64 or linux/arm64
 
 [llm]
-api_key = "sk-proj-***"
+api_key=sk-proj-***
 # API base URL (For Headless / CLI only -  In Web this is overridden by Session Init)
 #base_url = ""
-provider = "openai" # Can be openai, anthropic, deepseek, openrouter
+provider=openai # Can be openai, anthropic, deepseek, openrouter
 # Model to use. (For Headless / CLI only -  In Web this is overridden by Session Init)
-model = "openai/o3"
+model=openai/o3
+num_retries=3
+
+[agent]
+# Whether the browsing tool is enabled
+enable_browsing = true
+
+# Whether the LLM draft editor is enabled
+enable_llm_editor = false
+
+# Whether the standard editor tool (str_replace_editor) is enabled
+# Only has an effect if enable_llm_editor is False
+enable_editor = true
+
+# Whether the IPython tool is enabled
+enable_jupyter = true
+
+# Whether the command tool is enabled
+enable_cmd = true
+
+# Whether the think tool is enabled
+enable_think = true
+
+# Whether the finish tool is enabled
+enable_finish = true
+
+[sandbox]
+platform=linux/amd64

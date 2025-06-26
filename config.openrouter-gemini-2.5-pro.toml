@@ -3,9 +3,9 @@ search_api_key=tvly-I***
 reasoning_effort=high
 
 [llm]
-api_key=sk-proj-8JGUn***
-provider=openai
-model=openai/o3
+api_key=sk-or-v1-***
+provider=openrouter
+model=openrouter/google/gemini-2.5-pro
 num_retries=3
 
 [agent]
