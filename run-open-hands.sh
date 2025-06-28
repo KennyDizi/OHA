@@ -47,7 +47,7 @@ if [ -f .env ]; then
             echo "${name}=${value}"
         fi
     }
-    print_var "SANDBOX_RUNTIME_CONTAINER_IMAGE" "docker.all-hands.dev/all-hands-ai/runtime:0.47-nikolaik"
+    print_var "SANDBOX_RUNTIME_CONTAINER_IMAGE" "docker.all-hands.dev/all-hands-ai/runtime:0.47.0-nikolaik"
     print_var "LOG_ALL_EVENTS" "true"
     print_var "SANDBOX_USER_ID" "$(id -u)"
     print_var "SANDBOX_VOLUMES" "$SANDBOX_VOLUMES"
@@ -68,7 +68,7 @@ if [ -f .env ]; then
 
     # Run the Open Hands container
     docker run -it --rm --pull=always \
-        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.47-nikolaik \
+        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.47.0-nikolaik \
         -e LOG_ALL_EVENTS=true \
         -e SANDBOX_USER_ID=$(id -u) \
         -e SANDBOX_VOLUMES=$SANDBOX_VOLUMES \
@@ -93,7 +93,7 @@ if [ -f .env ]; then
         --add-host host.docker.internal:host-gateway \
         --network oha-network \
         --name "${CONTAINER_NAME}" \
-        docker.all-hands.dev/all-hands-ai/openhands:0.47 \
+        docker.all-hands.dev/all-hands-ai/openhands:0.47.0 \
         python3 -m openhands.cli.main --override-cli-mode true
 else
     echo "Error: .env file not found"
