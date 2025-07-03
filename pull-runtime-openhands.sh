@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker pull docker.all-hands.dev/all-hands-ai/runtime:0.47.0-nikolaik
+docker pull docker.all-hands.dev/all-hands-ai/runtime:0.48.0-nikolaik
