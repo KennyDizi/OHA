@@ -9,15 +9,15 @@ if [ -f .env ]; then
     : "${CONTAINER_NAME:=oha-container}"   # default if .env omits it
     # ----------------------------------------------------------------
 
-    # Only pass REASONING_EFFORT to Docker if it is set/non-empty
-    REASONING_EFFORT_ARG=""
-    if [[ -n "$REASONING_EFFORT" ]]; then
-        REASONING_EFFORT_ARG="-e REASONING_EFFORT=${REASONING_EFFORT}"
+    # Only pass LLM_REASONING_EFFORT to Docker if it is set/non-empty
+    LLM_REASONING_EFFORT_ARG=""
+    if [[ -n "$LLM_REASONING_EFFORT" ]]; then
+        LLM_REASONING_EFFORT_ARG="-e LLM_REASONING_EFFORT=${LLM_REASONING_EFFORT}"
     fi
 
     # Display selected model & reasoning-effort (only when an effort was supplied)
-    if [[ -n "$REASONING_EFFORT_ARG" ]]; then
-        echo "Using model: ${LLM_MODEL} with reasoning effort: ${REASONING_EFFORT}"
+    if [[ -n "$LLM_REASONING_EFFORT_ARG" ]]; then
+        echo "Using model: ${LLM_MODEL} with reasoning effort: ${LLM_REASONING_EFFORT}"
     fi
 
     export SANDBOX_VOLUMES=$(pwd):/workspace:rw
@@ -60,7 +60,7 @@ if [ -f .env ]; then
     print_var "AGENT_ENABLE_THINK" "$AGENT_ENABLE_THINK"
     print_var "LLM_NUM_RETRIES" "$LLM_NUM_RETRIES"
     print_var "AGENT_ENABLE_MCP" "$AGENT_ENABLE_MCP"
-    print_var "REASONING_EFFORT" "$REASONING_EFFORT"
+    print_var "LLM_REASONING_EFFORT" "$LLM_REASONING_EFFORT"
     print_var "SANDBOX_PLATFORM" "$SANDBOX_PLATFORM"
     print_var "SANDBOX_ENABLE_GPU" "$SANDBOX_ENABLE_GPU"
     print_var "SEARCH_API_KEY" "$SEARCH_API_KEY"
@@ -81,7 +81,7 @@ if [ -f .env ]; then
         -e AGENT_ENABLE_THINK=$AGENT_ENABLE_THINK \
         -e LLM_NUM_RETRIES=$LLM_NUM_RETRIES \
         -e AGENT_ENABLE_MCP=$AGENT_ENABLE_MCP \
-        $REASONING_EFFORT_ARG \
+        $LLM_REASONING_EFFORT_ARG \
         -e SANDBOX_PLATFORM=$SANDBOX_PLATFORM \
         -e SANDBOX_ENABLE_GPU=$SANDBOX_ENABLE_GPU \
         -e SEARCH_API_KEY=$SEARCH_API_KEY \
