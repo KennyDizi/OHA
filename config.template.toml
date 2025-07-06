@@ -1,6 +1,5 @@
 [core]
 search_api_key = "tvly-***"
-reasoning_effort = "high"
 platform = "linux/amd64" # Can be linux/amd64 or linux/arm64
 
 # Enable the browser environment
@@ -13,6 +12,7 @@ api_key = "sk-proj-***"
 provider = "openai" # Can be openai, anthropic, deepseek, openrouter
 # Model to use. (For Headless / CLI only -  In Web this is overridden by Session Init)
 model = "openai/o3"
+reasoning_effort = "high"
 
 [agent]
 

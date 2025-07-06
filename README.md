@@ -41,7 +41,7 @@ cp .env.example .env
 - `LLM_MODEL`            : Model to call (default: `anthropic/claude-sonnet-4-20250514`)
 - `LLM_NUM_RETRIES`      : How many times to retry a failed completion (default: `3`)
 - `LLM_CACHING_PROMPT`   : Enable prompt/result cache (default: `true`)
-- `CORE_REASONING_EFFORT`: Agent reasoning effort, e.g. `low` / `medium` / `high` (default: `high`)
+- `LLM_REASONING_EFFORT`: Agent reasoning effort, e.g. `low` / `medium` / `high` (default: `high`)
 - `CORE_PLATFORM`        : Target platform architecture (default: `linux/amd64`)
 - `AGENT_MEMORY_ENABLED` : Persist and recall agent memory across runs (default: `true`)
 - `CONTAINER_NAME`       : Name given to the Docker container (default: `OHA`)
