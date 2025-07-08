@@ -28,14 +28,15 @@ if [ -f .env ]; then
         echo "Using model: ${LLM_MODEL} with reasoning effort: ${LLM_REASONING_EFFORT}"
     fi
 
-    export SANDBOX_VOLUMES=$(pwd):/workspace:rw
-    export RUNTIME_MOUNT=$(pwd):/workspace:rw
+    export HOST_WORKSPACE="$(pwd)"
+    export SANDBOX_VOLUMES="${HOST_WORKSPACE}:/workspace:rw"
+    export RUNTIME_MOUNT="${HOST_WORKSPACE}:/workspace:rw"
 
     # ------------------------------------------------------------------
     # Ensure the dedicated Docker network exists
-    if ! docker network ls --format '{{.Name}}' | grep -q '^oha-network$'; then
-        echo "Creating Docker network 'oha-network'"
-        docker network create oha-network
+    if ! docker network ls --format '{{.Name}}' | grep -q '^oha-cli-network$'; then
+        echo "Creating Docker network 'oha-cli-network'"
+        docker network create oha-cli-network
     fi
     # ------------------------------------------------------------------
 
@@ -97,11 +98,11 @@ if [ -f .env ]; then
         -e SEARCH_API_KEY=$SEARCH_API_KEY \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v ~/.openhands:/.openhands \
-        -v $RUNTIME_MOUNT \
+        -v "${HOST_WORKSPACE}:/workspace:rw" \
         -w /workspace \
         -p 3080:3080 \
         --add-host host.docker.internal:host-gateway \
-        --network oha-network \
+        --network oha-cli-network \
         --name "${CONTAINER_NAME}" \
         docker.all-hands.dev/all-hands-ai/openhands:0.48.0 \
         python3 -m openhands.cli.main --override-cli-mode true
