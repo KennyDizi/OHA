@@ -26,29 +26,73 @@
 
 ![SWE Bench TypeScript Leaderboard](./assets/SWE-Bench-TypeScript.png)
 
-## Environment Setup
+## Configuration
 
-### Copy the example environment file
+### Environment Setup
+
+1. **Copy the example environment file:**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Configure your environment variables in `.env`:**
+
+#### Required Variables
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `LLM_API_KEY` | Your LLM provider API key | `sk-ant-api03-...` |
+
+#### LLM Configuration
+
+| Variable | Description | Default | Options |
+|----------|-------------|---------|---------|
+| `LLM_PROVIDER` | LLM provider to use | `anthropic` | `anthropic`, `openai`, `groq` |
+| `LLM_MODEL` | Model to call | `anthropic/claude-sonnet-4-20250514` | Provider-specific model names |
+| `LLM_NUM_RETRIES` | How many times to retry a failed completion | `3` | `1-10` |
+| `LLM_CACHING_PROMPT` | Enable prompt/result cache | `true` | `true`, `false` |
+| `LLM_REASONING_EFFORT` | Agent reasoning effort level | `high` | `low`, `medium`, `high` |
+
+#### Agent Configuration
+
+| Variable | Description | Default | Options |
+|----------|-------------|---------|---------|
+| `AGENT_MEMORY_ENABLED` | Persist and recall agent memory across runs | `true` | `true`, `false` |
+| `AGENT_ENABLE_THINK` | Emit the agent's internal THINK steps to the logs | `true` | `true`, `false` |
+| `AGENT_ENABLE_MCP` | Enable multi-component-planning mode | `false` | `true`, `false` |
+
+#### System Configuration
+
+| Variable | Description | Default | Options |
+|----------|-------------|---------|---------|
+| `SANDBOX_PLATFORM` | Target platform architecture | `linux/amd64` | `linux/amd64`, `linux/arm64` |
+| `CONTAINER_NAME` | Name given to the Docker container | `OHA` | Any valid container name |
+
+### Example `.env` Configuration
 
 ```bash
-cp .env.example .env
+# Required
+LLM_API_KEY=sk-ant-api03-your-api-key-here
+
+# LLM Configuration
+LLM_PROVIDER=anthropic
+LLM_MODEL=anthropic/claude-sonnet-4-20250514
+LLM_NUM_RETRIES=3
+LLM_CACHING_PROMPT=true
+LLM_REASONING_EFFORT=high
+
+# Agent Configuration
+AGENT_MEMORY_ENABLED=true
+AGENT_ENABLE_THINK=true
+AGENT_ENABLE_MCP=false
+
+# System Configuration
+SANDBOX_PLATFORM=linux/amd64
+CONTAINER_NAME=OHA
 ```
 
-### Configure your environment variables in `.env`
-
-- `LLM_API_KEY`          : Your LLM provider API key **(required)**
-- `LLM_PROVIDER`         : LLM provider to use (default: `anthropic`)
-- `LLM_MODEL`            : Model to call (default: `anthropic/claude-sonnet-4-20250514`)
-- `LLM_NUM_RETRIES`      : How many times to retry a failed completion (default: `3`)
-- `LLM_CACHING_PROMPT`   : Enable prompt/result cache (default: `true`)
-- `LLM_REASONING_EFFORT`: Agent reasoning effort, e.g. `low` / `medium` / `high` (default: `high`)
-- `CORE_PLATFORM`        : Target platform architecture (default: `linux/amd64`)
-- `AGENT_MEMORY_ENABLED` : Persist and recall agent memory across runs (default: `true`)
-- `CONTAINER_NAME`       : Name given to the Docker container (default: `OHA`)
-- `AGENT_ENABLE_THINK`   : Emit the agent's internal THINK steps to the logs (default: `true`)
-- `AGENT_ENABLE_MCP`     : Enable multi-component-planning mode (default: `false`)
-
-Read more at [here](https://docs.all-hands.dev/modules/usage/llms)
+📖 **For detailed LLM configuration options, visit:** [LLM Configuration Guide](https://docs.all-hands.dev/modules/usage/llms)
 
 ## Running the Application
 
