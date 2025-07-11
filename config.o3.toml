@@ -1,9 +1,11 @@
 [core]
 search_api_key = "tvly-***"
-platform = "linux/amd64"
 
 [llm]
 api_key = "sk-proj-***"
 provider = "openai"
 model = "o3"
 reasoning_effort = "high"
+
+[sandbox]
+platform = "linux/amd64"

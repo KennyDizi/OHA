@@ -1,8 +1,10 @@
 [core]
 search_api_key = "tvly-***"
-platform = "linux/amd64"
 
 [llm]
 api_key = "sk-***"
 provider = "deepseek"
 model = "deepseek/deepseek-reasoner"
+
+[sandbox]
+platform = "linux/amd64"

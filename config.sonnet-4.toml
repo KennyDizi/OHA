@@ -1,8 +1,10 @@
 [core]
 search_api_key = "tvly-***"
-platform = "linux/amd64"
 
 [llm]
 api_key = "sk-ant-api03-***"
 provider = "anthropic"
 model = "anthropic/claude-sonnet-4-20250514"
+
+[sandbox]
+platform = "linux/amd64"
