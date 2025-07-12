@@ -44,6 +44,12 @@
 |----------|-------------|---------|
 | `LLM_API_KEY` | Your LLM provider API key | `sk-ant-api03-...` |
 
+#### Optional Variables
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `SEARCH_API_KEY` | API key for search functionality (Tavily) | `tvly-***` |
+
 #### LLM Configuration
 
 | Variable | Description | Default | Options |
@@ -67,29 +73,49 @@
 | Variable | Description | Default | Options |
 |----------|-------------|---------|---------|
 | `SANDBOX_PLATFORM` | Target platform architecture | `linux/amd64` | `linux/amd64`, `linux/arm64` |
-| `CONTAINER_NAME` | Name given to the Docker container | `OHA` | Any valid container name |
+| `SANDBOX_ENABLE_GPU` | Enable GPU support in sandbox | `false` | `true`, `false` |
+| `SANDBOX_RUNTIME_CONTAINER_IMAGE` | Container image for the runtime sandbox | `all-hands-ai/runtime:latest` | Any valid container image |
+| `CONTAINER_NAME` | Name given to the Docker container | `oha-cli-container` | Any valid container name |
+
+#### Logging Configuration
+
+| Variable | Description | Default | Options |
+|----------|-------------|---------|---------|
+| `LOG_LEVEL` | Logging level for the application | `INFO` | `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL` |
+| `LOG_ALL_EVENTS` | Log all events or only top-level events | `true` | `true`, `false` |
 
 ### Example `.env` Configuration
 
 ```bash
-# Required
-LLM_API_KEY=sk-ant-api03-your-api-key-here
+# Optional - Search functionality
+SEARCH_API_KEY=tvly-***
+
+# Required - LLM API Key
+LLM_API_KEY=
 
 # LLM Configuration
-LLM_PROVIDER=anthropic
-LLM_MODEL=anthropic/claude-sonnet-4-20250514
+LLM_PROVIDER="anthropic"
+LLM_MODEL="anthropic/claude-sonnet-4-20250514"
 LLM_NUM_RETRIES=3
 LLM_CACHING_PROMPT=true
-LLM_REASONING_EFFORT=high
+LLM_REASONING_EFFORT="high"
+
+# System Configuration
+SANDBOX_PLATFORM="linux/amd64"
+SANDBOX_ENABLE_GPU=false
+SANDBOX_RUNTIME_CONTAINER_IMAGE="all-hands-ai/runtime:latest"
 
 # Agent Configuration
 AGENT_MEMORY_ENABLED=true
 AGENT_ENABLE_THINK=true
 AGENT_ENABLE_MCP=false
 
-# System Configuration
-SANDBOX_PLATFORM=linux/amd64
-CONTAINER_NAME=OHA
+# Container Configuration
+CONTAINER_NAME="oha-cli-container"
+
+# Logging Configuration
+LOG_LEVEL="INFO"
+LOG_ALL_EVENTS=true
 ```
 
 📖 **For detailed LLM configuration options, visit:** [LLM Configuration Guide](https://docs.all-hands.dev/modules/usage/llms)
