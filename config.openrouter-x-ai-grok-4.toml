@@ -1,0 +1,11 @@
+[core]
+search_api_key = "tvly-***"
+
+[llm]
+api_key = "sk-or-***"
+provider = "openrouter"
+model = "x-ai/grok-4"
+reasoning_effort = "high"
+
+[sandbox]
+platform = "linux/amd64"

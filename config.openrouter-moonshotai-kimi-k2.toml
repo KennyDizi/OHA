@@ -1,0 +1,10 @@
+[core]
+search_api_key = "tvly-***"
+
+[llm]
+api_key = "sk-or-***"
+provider = "openrouter"
+model = "moonshotai/kimi-k2"
+
+[sandbox]
+platform = "linux/amd64"
