@@ -1,9 +1,6 @@
 [core]
 search_api_key = "tvly-***"
 
-# Enable the browser environment
-enable_browser = true
-
 [llm]
 api_key = "sk-proj-***"
 # API base URL (For Headless / CLI only -  In Web this is overridden by Session Init)
@@ -14,6 +11,9 @@ model = "openai/o3"
 reasoning_effort = "high"
 
 [agent]
+
+# Enable the browser environment
+enable_browser = true
 
 # Whether the browsing tool is enabled
 # Note: when this is set to true, enable_browser in the core config must also be true

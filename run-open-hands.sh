@@ -23,6 +23,10 @@ if [ -f .env ]; then
     : "${LOG_ALL_EVENTS:=true}"
     LOG_ALL_EVENTS_ARG="-e LOG_ALL_EVENTS=${LOG_ALL_EVENTS}"
 
+    # Set default SANDBOX_RUNTIME_CONTAINER_IMAGE if not specified, then pass to Docker
+    : "${SANDBOX_RUNTIME_CONTAINER_IMAGE:="all-hands-ai/runtime:latest"}"
+    SANDBOX_RUNTIME_CONTAINER_IMAGE_ARG="-e SANDBOX_RUNTIME_CONTAINER_IMAGE=${SANDBOX_RUNTIME_CONTAINER_IMAGE}"
+
     # Display selected model & reasoning-effort (only when an effort was supplied)
     if [[ -n "$LLM_REASONING_EFFORT_ARG" ]]; then
         echo "Using model: ${LLM_MODEL} with reasoning effort: ${LLM_REASONING_EFFORT}"
@@ -56,7 +60,7 @@ if [ -f .env ]; then
             echo "${name}=${value}"
         fi
     }
-    print_var "SANDBOX_RUNTIME_CONTAINER_IMAGE" "docker.all-hands.dev/all-hands-ai/runtime:0.48.0-nikolaik"
+    print_var "SANDBOX_RUNTIME_CONTAINER_IMAGE" "$SANDBOX_RUNTIME_CONTAINER_IMAGE"
     print_var "SANDBOX_USER_ID" "$(id -u)"
     print_var "SANDBOX_VOLUMES" "$SANDBOX_VOLUMES"
     print_var "RUNTIME_MOUNT" "$RUNTIME_MOUNT"
@@ -78,7 +82,7 @@ if [ -f .env ]; then
 
     # Run the Open Hands container
     docker run -it --rm --pull=always \
-        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.48.0-nikolaik \
+        $SANDBOX_RUNTIME_CONTAINER_IMAGE_ARG \
         -e SANDBOX_USER_ID=$(id -u) \
         -e SANDBOX_VOLUMES=$SANDBOX_VOLUMES \
         -e RUNTIME_MOUNT=$RUNTIME_MOUNT \
