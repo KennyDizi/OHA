@@ -35,6 +35,7 @@ if [ -f .env ]; then
     export HOST_WORKSPACE="$(pwd)"
     export SANDBOX_VOLUMES="${HOST_WORKSPACE}:/workspace:rw"
     export RUNTIME_MOUNT="${HOST_WORKSPACE}:/workspace:rw"
+    export WORKSPACE_MOUNT_PATH_IN_SANDBOX="${HOST_WORKSPACE}:/workspace:rw"
 
     # ------------------------------------------------------------------
     # Ensure the dedicated Docker network exists
@@ -64,6 +65,7 @@ if [ -f .env ]; then
     print_var "SANDBOX_USER_ID" "$(id -u)"
     print_var "SANDBOX_VOLUMES" "$SANDBOX_VOLUMES"
     print_var "RUNTIME_MOUNT" "$RUNTIME_MOUNT"
+    print_var "WORKSPACE_MOUNT_PATH_IN_SANDBOX" "$WORKSPACE_MOUNT_PATH_IN_SANDBOX"
     print_var "LLM_API_KEY" "$LLM_API_KEY"
     print_var "LLM_PROVIDER" "$LLM_PROVIDER"
     print_var "LLM_MODEL" "$LLM_MODEL"
@@ -86,6 +88,7 @@ if [ -f .env ]; then
         -e SANDBOX_USER_ID=$(id -u) \
         -e SANDBOX_VOLUMES=$SANDBOX_VOLUMES \
         -e RUNTIME_MOUNT=$RUNTIME_MOUNT \
+        -e WORKSPACE_MOUNT_PATH_IN_SANDBOX=$WORKSPACE_MOUNT_PATH_IN_SANDBOX \
         -e LLM_API_KEY=$LLM_API_KEY \
         -e LLM_PROVIDER=$LLM_PROVIDER \
         -e LLM_MODEL=$LLM_MODEL \
@@ -108,7 +111,7 @@ if [ -f .env ]; then
         --add-host host.docker.internal:host-gateway \
         --network oha-cli-network \
         --name "${CONTAINER_NAME}" \
-        docker.all-hands.dev/all-hands-ai/openhands:0.48.0 \
+        docker.all-hands.dev/all-hands-ai/openhands:0.49.0 \
         python3 -m openhands.cli.main --override-cli-mode true
 else
     echo "Error: .env file not found"
