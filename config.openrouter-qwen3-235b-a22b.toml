@@ -1,0 +1,14 @@
+[core]
+search_api_key = "tvly-***"
+
+[llm]
+api_key = "sk-or-***"
+provider = "openrouter"
+model = "qwen/qwen3-235b-a22b-07-25"
+
+[sandbox]
+platform = "linux/amd64"
+
+[agent]
+enable_browsing = true
+enable_think = true
