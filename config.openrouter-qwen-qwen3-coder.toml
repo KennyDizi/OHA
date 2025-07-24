@@ -3,10 +3,9 @@ search_api_key = "tvly-***"
 enable_browser = true
 
 [llm]
-api_key = "sk-proj-***"
-provider = "openai"
-model = "o3"
-reasoning_effort = "high"
+api_key = "sk-or-***"
+provider = "openrouter"
+model = "qwen/qwen3-coder"
 
 [sandbox]
 platform = "linux/amd64"

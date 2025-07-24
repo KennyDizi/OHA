@@ -1,5 +1,6 @@
 [core]
 search_api_key = "tvly-***"
+enable_browser = true
 
 [llm]
 api_key = "sk-proj-***"
