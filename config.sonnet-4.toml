@@ -1,5 +1,6 @@
 [core]
 search_api_key = "tvly-***"
+enable_browser = true
 
 [llm]
 api_key = "sk-ant-api03-***"
@@ -8,3 +9,7 @@ model = "anthropic/claude-sonnet-4-20250514"
 
 [sandbox]
 platform = "linux/amd64"
+
+[agent]
+enable_browsing = true
+enable_think = true
