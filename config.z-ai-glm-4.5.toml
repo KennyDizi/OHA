@@ -1,0 +1,17 @@
+[core]
+search_api_key = "tvly-***"
+enable_browser = true
+
+[llm]
+api_key = "sk-or-***"
+provider = "openrouter"
+model = "z-ai/glm-4.5"
+max_input_tokens = 131072
+max_output_tokens = 131072
+
+[sandbox]
+platform = "linux/amd64"
+
+[agent]
+enable_browsing = true
+enable_think = true
