@@ -1,0 +1,16 @@
+[core]
+search_api_key = "tvly-***"
+enable_browser = true
+
+[llm]
+api_key = "sk-proj-***"
+provider = "openai"
+model = "gpt-5-2025-08-07"
+reasoning_effort = "high"
+
+[sandbox]
+platform = "linux/amd64"
+
+[agent]
+enable_browsing = true
+enable_think = true
