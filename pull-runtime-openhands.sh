@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker pull docker.all-hands.dev/all-hands-ai/runtime:0.62.0-nikolaik
-docker tag docker.all-hands.dev/all-hands-ai/runtime:0.62.0-nikolaik all-hands-ai/runtime:latest
+podman pull docker.openhands.dev/openhands/runtime:0.62.0-nikolaik
+podman tag docker.openhands.dev/openhands/runtime:0.62.0-nikolaik openhands/runtime:latest
