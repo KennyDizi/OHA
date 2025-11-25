@@ -74,7 +74,7 @@
 |----------|-------------|---------|---------|
 | `SANDBOX_PLATFORM` | Target platform architecture | `linux/amd64` | `linux/amd64`, `linux/arm64` |
 | `SANDBOX_ENABLE_GPU` | Enable GPU support in sandbox | `false` | `true`, `false` |
-| `SANDBOX_RUNTIME_CONTAINER_IMAGE` | Container image for the runtime sandbox | `all-hands-ai/runtime:latest` | Any valid container image |
+| `SANDBOX_RUNTIME_CONTAINER_IMAGE` | Container image for the runtime sandbox | `openhands/runtime:latest` | Any valid container image |
 | `CONTAINER_NAME` | Name given to the Docker container | `oha-cli-container` | Any valid container name |
 
 #### Logging Configuration
@@ -103,7 +103,7 @@ LLM_REASONING_EFFORT="high"
 # System Configuration
 SANDBOX_PLATFORM="linux/amd64"
 SANDBOX_ENABLE_GPU=false
-SANDBOX_RUNTIME_CONTAINER_IMAGE="all-hands-ai/runtime:latest"
+SANDBOX_RUNTIME_CONTAINER_IMAGE="openhands/runtime:latest"
 
 # Agent Configuration
 AGENT_MEMORY_ENABLED=true
